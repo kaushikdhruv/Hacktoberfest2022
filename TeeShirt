@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+class TeeShirt{
+    protected int orderNumber;
+    protected String size;
+    protected String colour;
+    protected double price;
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
+    public double getPrice() {
+        if(size.equals("XXL") | size.equals("XXXL"))
+        {
+            return 22.99;
+        }
+        else {
+            return 19.99;
+        }
+    }
+}
+
+class CustomTee extends TeeShirt
+{
+    protected String slogan;
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
+    }
+}
+
+public class DemoTees {
+    public static void main(String[] args) {
+        TeeShirt t1 = new TeeShirt();
+        TeeShirt t2 = new TeeShirt();
+        t1.setOrderNumber(123);
+        t1.setSize("XXL");
+        t1.setColour("Orange");
+        System.out.println("The order details are :" + "The order number is "+ t1.getOrderNumber()+
+                " The size is "+t1.getSize()+" The colour is "+t1.getColour()+" And the price is "+t1.getPrice());
+
+        t2.setOrderNumber(456);
+        t2.setSize("XL");
+        t2.setColour("Pink");
+        System.out.println("The order details are :" + "The order number is "+ t2.getOrderNumber()+
+                " The size is "+t2.getSize()+" The colour is "+t2.getColour()+" And the price is "+t2.getPrice());
+
+        CustomTee c1 = new CustomTee();
+        c1.setOrderNumber(123);
+        c1.setSize("S");
+        c1.setColour("red");
+        c1.setSlogan("We thrive");
+        System.out.println("The order details are :" + "The order number is "+ c1.getOrderNumber()+
+                " The size is "+c1.getSize()+" The colour is "+c1.getColour()+" And the price is "+c1.getPrice()+" The slogan is "+c1.getSlogan());
+    }
+}
