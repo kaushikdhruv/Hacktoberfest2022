@@ -1,0 +1,16 @@
+import java.util.Scanner;
+class SqrtException
+{
+   public static void main(String args[])
+   {
+      double n;     
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter the number");
+      n = sc.nextDouble();
+      if(n<0)
+      {
+         throw new ArithmeticException("Sqrt method cant take negative values");
+      }
+      System.out.println("Square root value is "+Math.sqrt(n));
+   }
+}
