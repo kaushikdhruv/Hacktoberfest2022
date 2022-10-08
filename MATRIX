@@ -1,0 +1,97 @@
+import java.util.Scanner;
+class Matrix{
+    int[][] m;
+    Matrix(){
+        m = new int[3][3];
+    }
+    public void readMatrix()
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Elements for the Matrix");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.printf("Enter Element for m[%d][%d] position: ",i,j);
+                m[i][j] = sc.nextInt();
+            }
+        }
+    }
+    public void printMatrix()
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                
+                System.out.print(m[i][j]+" ");
+            }
+            System.out.printf("\n");
+        }
+    }
+
+    int[][] addMatrix(Matrix a)
+    {
+        int[][] result = new int[3][3];
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                result[i][j] = m[i][j]+a.m[i][j];
+            }
+        }
+        return result;
+    }
+    int[][] subMatrix(Matrix a)
+    {
+        int[][] result = new int[3][3];
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                result[i][j] = m[i][j]-a.m[i][j];
+            }
+        }
+        return result;
+    }
+}
+
+public class TestMatrix{
+    public static void main(String[] args)
+    {
+        Matrix m = new Matrix();
+        Matrix n = new Matrix();
+        m.readMatrix();
+        n.readMatrix();
+        System.out.println("Printing First Matrix");
+        m.printMatrix();
+        System.out.println("Printing Second Matrix");
+        n.printMatrix();
+        int[][] result = new int[3][3];
+        result = n.addMatrix(m);
+        System.out.println("Printing Addition of both the Matrices");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(result[i][j]+" ");
+            }
+            System.out.printf("\n");
+        }
+
+        int[][] result1 = new int[3][3];
+        result1 = n.subMatrix(m);
+        System.out.println("Printing Difference of both Matrices");
+        for(int i=0;i<3;i++)
+        {
+            for(int j=0;j<3;j++)
+            {
+                System.out.print(result1[i][j]+" ");
+            }
+            System.out.printf("\n");
+        }
+        
+    }
+}
