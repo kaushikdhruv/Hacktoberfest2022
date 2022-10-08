@@ -1,0 +1,138 @@
+#Database
+package hospDatabase;
+import hospNurse.*;
+import hospDoctor.*;
+import hospPatient.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class Database {
+	ArrayList<Patient> PatientStack = new ArrayList<>();
+	ArrayList<Nurse> NurseStock = new ArrayList<>();
+	ArrayList<Doctor> doctorStock = new ArrayList<>();
+	Scanner input = new Scanner(System.in);
+	public void readData() {
+	// Read patient details
+		System.out.print("Enter the Patient Name: ");
+		String name = input.nextLine();
+		System.out.print("Enter the Patient ID: ");
+		String id = input.nextLine();
+		// Add to Patient list
+		PatientStack.add(new Patient(name, id));
+		// Read Doctor details
+		System.out.print("Enter the Doctor Name: ");
+		name = input.nextLine();
+		System.out.print("Enter the Doctor ID: ");
+		id = input.nextLine();
+		System.out.print("Enter the Doctor Type: ");
+		String type = input.nextLine();
+		doctorStock.add(new Doctor(name, id, type));
+		System.out.print("Enter the Nurse Name: ");
+		name = input.nextLine();
+		System.out.print("Enter the Nurse ID: ");
+		id = input.nextLine();
+		System.out.print("Enter the Nurse Type: ");
+		type = input.nextLine();
+		// Add to Nurse list
+		NurseStock.add(new Nurse(name, id, type));
+	}
+	public void displayDetails() {
+		;
+		System.out.println("The patient details are:");
+		for (Patient patient : PatientStack) {
+			System.out.println(patient);
+		}
+		System.out.println("The Nurse details are:");
+		for (Nurse nurse : NurseStock) {
+			System.out.println(nurse);
+		}
+		System.out.println("The Doctor details are:");
+		for (Doctor doctor : doctorStock) {
+			System.out.println(doctor);
+		}
+	}
+}
+
+#TeshHosp
+package hospDatabase;
+public class TestHosp {
+	public static void main(String[] args) {
+		Database hD = new Database();
+		hD.readData();
+		hD.displayDetails();
+	}
+}
+
+#Nurse
+package hospNurse;
+import hospStaff.*;
+public class Nurse extends Staff {
+	String type;
+	public Nurse(String name, String staffId, String type) {
+		super(name, staffId);
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return super.toString() + ", and the nurse is "+type;
+	}
+}
+
+#Doctor
+package hospDoctor;
+import hospStaff.*;
+public class Doctor extends Staff {
+	String type;
+	public Doctor(String name, String staffId, String type) {
+		super(name, staffId);
+		this.type = type;
+	}
+	@Override
+	public String toString() {
+		return super.toString() + ", and the doctor type is "+type;
+	}
+}
+
+#Patient
+package hospPatient;
+import hospPerson.Person;
+public class Patient extends Person {
+	String patientId;
+	public Patient(String name, String patientId) {
+		super(name);
+		this.patientId = patientId;
+	}
+	@Override
+	public String toString() {
+		return super.toString() + ", the patient id is "+patientId;
+	}
+}
+
+#Staff
+package hospStaff;
+import hospPerson.*;
+public class Staff extends Person{
+	String staffId;
+	public Staff(String name, String staffId) {
+		super(name);
+		this.staffId = staffId;
+	}
+	@Override
+	public String toString() {
+		return super.toString() + ", the staff id is "+staffId;
+	}
+}
+
+#Person
+package hospPerson;
+public class Person {
+	String name;
+	public Person(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "The name is "+name+"";
+	}
+}
+
+#
